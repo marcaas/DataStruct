@@ -36,7 +36,7 @@ int LocateElem(SqList L,int e){
             return i+1;
     return 0;
 }
-//按位查找
+// 按位查找
 int GetElem(SqList L,int i){
     if(i<1||i>L.Length){
         printf("输入位置不合法");
@@ -44,7 +44,35 @@ int GetElem(SqList L,int i){
     }
     return L.data[i-1];
 }
-//测试
+// 初始化表
+bool InitList(SqList &L){
+    L.Length = 0;
+    return true;
+}
+// 表长
+int Length(SqList L){
+    return L.Length;
+}
+bool PrintList(SqList L){
+    if(L.Length == 0){
+        printf("空表\n");
+        return false;
+    }
+    for(int i = 0;i<L.Length;i++)
+        printf("%d ",L.data[i]);
+    printf("\n");
+    return true;
+}
+// 判空
+bool Empty(SqList L){
+    if(L.Length == 0){
+        printf("空表\n");
+        return false;
+    }
+    printf("非空\n");
+    return true;
+}
+// 测试
 int main(){
     SqList L;
     L.Length = 0;
@@ -52,19 +80,19 @@ int main(){
         L.data[i] = i+1;
         L.Length++;
     }
-    for(int i = 0;i<L.Length;i++)
-        printf("%d\n",L.data[i]);
+    PrintList(L);
     ListInsert(L,2,10);
-    for(int i = 0;i<L.Length;i++)
-        printf("%d\n",L.data[i]);
+    PrintList(L);
     int e;
     ListDelete(L,2,e);
-    for(int i = 0;i<L.Length;i++)
-        printf("%d\n",L.data[i]);
+    PrintList(L);
     printf("%d\n",e);
     int ans = LocateElem(L,2);
     printf("%d\n",ans);
     ans = GetElem(L,9);
     printf("%d\n",ans);
+    InitList(L);
+    PrintList(L);
+    Empty(L);
     return 0;
 }
