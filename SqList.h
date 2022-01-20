@@ -4,7 +4,7 @@
 typedef struct SqList
 {
     int data[MaxSize];
-    int Length;
+    int Length = 0;
 };
 // 插入操作
 bool ListInsert(SqList &L,int i,int e){
@@ -71,28 +71,4 @@ bool Empty(SqList L){
     }
     printf("非空\n");
     return true;
-}
-// 测试
-int main(){
-    SqList L;
-    L.Length = 0;
-    for(int i = 0;i<MaxSize - 1;i++){
-        L.data[i] = i+1;
-        L.Length++;
-    }
-    PrintList(L);
-    ListInsert(L,2,10);
-    PrintList(L);
-    int e;
-    ListDelete(L,2,e);
-    PrintList(L);
-    printf("%d\n",e);
-    int ans = LocateElem(L,2);
-    printf("%d\n",ans);
-    ans = GetElem(L,9);
-    printf("%d\n",ans);
-    InitList(L);
-    PrintList(L);
-    Empty(L);
-    return 0;
 }
